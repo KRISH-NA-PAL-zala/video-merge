@@ -1,4 +1,4 @@
-import moviepy.editor as mp
+import moviepy
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
@@ -18,8 +18,8 @@ def remove_selected_files():
 def merge_videos():
     file_paths = listbox.get(0, tk.END)
 
-    video_clips = [mp.VideoFileClip(video_file) for video_file in file_paths]
-    final_video = mp.concatenate_videoclips(video_clips)
+    video_clips = [moviepy.VideoFileClip(video_file) for video_file in file_paths]
+    final_video = moviepy.concatenate_videoclips(video_clips)
     final_video.write_videofile("merged_video.mp4", codec="libx264")
 
     messagebox.showinfo("Success", "Videos merged successfully!")
